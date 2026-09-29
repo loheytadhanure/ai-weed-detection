@@ -390,5 +390,6 @@ Sensor Integration
 📌 Project Status
 
 Prototype / Research Project
+<img width="960" height="1280" alt="WhatsApp Image 2026-09-14 at 9 57 20 PM (7)" src="https://github.com/user-attachments/assets/817d5434-dbe5-4e3e-be57-59e5373b091d" />
 
 The current implementation demonstrates real-time weed detection and monitoring using YOLOv8 and ESP32-CAM, with documented paths toward a production-ready precision agriculture system.
