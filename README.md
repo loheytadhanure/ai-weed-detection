@@ -77,7 +77,9 @@ The system:
                    │ 5×5 Heatmap            │
                    │ Soil Moisture           │
                    └──────────────────────┘
+```
 🧠 Machine Learning Pipeline
+```text
 Dataset
 
 The model was trained using CottonWeedDet3, a real-world cotton field weed dataset containing multiple weed species.
@@ -108,8 +110,10 @@ Normalize to 0–1
    │
    ▼
 YOLO Annotation Files
-🤖 YOLOv8 Model
+```
 
+🤖 YOLOv8 Model
+```text
 The system uses YOLOv8 Nano with transfer learning from COCO pretrained weights.
 
 Training Configuration
@@ -124,9 +128,10 @@ Dataset	CottonWeedDet3
 Split	80% Training / 20% Validation
 
 The trained model is approximately 6 MB, making the Nano architecture suitable for real-time inference on commodity hardware.
+```
 
 ⚡ Real-Time Inference
-
+```text
 Although the model was trained at 640px, inference is performed at 320px to reduce computational cost and improve real-time performance.
 
 The detection pipeline uses two confidence thresholds:
@@ -142,9 +147,9 @@ Python-level filtering
 Final Weed Detection
 
 This provides an additional filtering stage to reduce false positives.
-
+```
 🗺️ 5×5 Spatial Weed Mapping
-
+```text
 One of the main features of the system is spatial mapping.
 
 Instead of simply displaying bounding boxes, every detected weed is assigned to one of 25 zones.
@@ -164,9 +169,9 @@ Instead of simply displaying bounding boxes, every detected weed is assigned to 
 The center of each detected bounding box is mapped to a corresponding row and column.
 
 The grid resets during every inference cycle, allowing the dashboard to represent the current detected state rather than accumulating historical detections.
-
+```
 📷 ESP32-CAM Integration
-
+```text
 The system can use an ESP32-CAM with an OV2640 camera sensor as the physical edge camera.
 
 The ESP32-CAM:
@@ -191,9 +196,9 @@ ESP32-CAM
        Flask Backend
 
 The moisture sensor uses GPIO33 (ADC1) so that analog readings remain compatible with the ESP32 Wi-Fi operation.
-
+```
 🌐 Backend
-
+```text
 The backend is implemented using Flask.
 
 Three background threads handle the major real-time tasks:
@@ -212,8 +217,9 @@ Endpoint	Purpose
 /api/sensors	Returns soil moisture information
 /api/status	Returns system health
 /api/toggle_camera	Switches camera source
+```
 🖥️ Web Dashboard
-
+```text
 The frontend provides a real-time monitoring interface containing:
 
 Live camera feed
@@ -225,9 +231,10 @@ System status
 Camera source toggle
 
 The dashboard communicates with the backend using REST APIs and periodically refreshes detection and sensor information.
+```
 
 ⚙️ Real-Time Optimizations
-
+```text
 Several optimizations were implemented to improve latency.
 
 Latest Frame Extraction
@@ -251,7 +258,9 @@ Camera capture, YOLO inference, and sensor processing run independently using da
        ▼            ▼            ▼
    Camera       YOLO Model     Sensor
    Thread       Thread         Thread
+```
 📊 Technology Stack
+```text
 Machine Learning
 Python
 YOLOv8
@@ -278,8 +287,9 @@ Communication
 HTTP
 MJPEG Streaming
 Wi-Fi
+```
 📸 Hardware Prototype
-
+```text
 The system was integrated with a physical ESP32-CAM and sensor setup.
 
 ESP32-CAM Prototype
@@ -289,8 +299,9 @@ Hardware Assembly
 Sensor and Camera Setup
 
 Add the uploaded hardware images to an assets/ folder and rename them to match the paths above.
-
+```
 🔄 End-to-End Workflow
+```text
 Camera / ESP32-CAM
         │
         ▼
@@ -321,8 +332,9 @@ Bounding Box Detection
                 │
                 ▼
          Web Dashboard
+```
 ⚠️ Current Limitations
-
+```text
 The current prototype has several known limitations:
 
 ESP32-CAM supports a single active client connection
@@ -331,8 +343,9 @@ Dashboard authentication is not implemented
 Detection history is not persisted
 Flask development server is used instead of a production WSGI server
 The 5×5 grid represents screen-space zones rather than GPS-based field coordinates
+```
 🔮 Future Improvements
-
+```text
 Potential production improvements include:
 
 Train for more epochs with early stopping
@@ -346,8 +359,10 @@ Persist detection history
 GPS-based field mapping
 Support multiple camera nodes
 Integrate automated precision spraying using relay-controlled solenoid valves
-🎯 Future Precision Agriculture Extension
+```
 
+🎯 Future Precision Agriculture Extension
+```text
 The spatial grid provides a foundation for targeted weed treatment.
 
 A future implementation could map detected weed zones to specific spray-control outputs:
@@ -373,9 +388,9 @@ Solenoid Valve
 Targeted Spraying
 
 This would extend the system from weed detection to automated precision weed management.
-
+```
 👨‍💻 Project Focus
-
+```text
 This project demonstrates the integration of:
 
 Real-time Computer Vision
@@ -387,7 +402,13 @@ REST API Development
 Real-Time Video Streaming
 Spatial Data Mapping
 Sensor Integration
+```
 📌 Project Status
+```text
+Prototype / Research Project
+
+The current implementation demonstrates real-time weed detection and monitoring using YOLOv8 and ESP32-CAM, with documented paths toward a production-ready precision agriculture system.
+```
 
 Prototype / Research Project
 <img width="960" height="1280" alt="WhatsApp Image 2026-09-14 at 9 57 20 PM (7)" src="https://github.com/user-attachments/assets/817d5434-dbe5-4e3e-be57-59e5373b091d" />
